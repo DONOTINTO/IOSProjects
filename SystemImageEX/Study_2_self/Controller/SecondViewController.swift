@@ -71,33 +71,33 @@ class SecondViewController: UIViewController {
         let newSymbolName = inputTextField.text!
         let newSymbol = Symbol(image: newSymbolImage, name: newSymbolName)
         
-        //중복확인
+        // 중복확인
         if SymbolManager.shared.isExist(newSymbol) {
             showAlert(title: "중복", message: "이미 존재하는 이미지 입니다. 새로운 이미지를 추가해보세요!")
             return
         }
         
-        //저장
+        // 저장
         if viewType == .add {
             SymbolManager.shared.append(newSymbol)
         } else {
             SymbolManager.shared.update(newSymbol, index: index!)
         }
         
-        //화면 다시 그리기 (delegate 패턴 적용)
+        // 화면 다시 그리기 (delegate 패턴 적용)
         delegate?.reload()
         self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension SecondViewController: UITextFieldDelegate {
-    //입력을 받을때마다 체크함
+    // 입력을 받을때마다 체크함
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateButton.isEnabled = false
         return true
     }
     
-    //엔터키를 입력받으면 미리보기 액션 실행
+    // 엔터키를 입력받으면 미리보기 액션 실행
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         checkButtonClicked(checkButton)
         return true

@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol cellButtonDelegate {
-    func buttonClicked()
-}
-
 class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mainLabel: UILabel!

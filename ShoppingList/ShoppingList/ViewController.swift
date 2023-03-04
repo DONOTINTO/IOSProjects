@@ -35,6 +35,7 @@ class ViewController: UIViewController {
             shoppingManager.shared.update(name: name, index: itemIndex!)
             addButton.setTitle("저장", for: .normal)
         }
+        
         buttonType = .add
         mainTextField.text = nil
         mainTableView.reloadData()
@@ -47,7 +48,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
         let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)

@@ -20,7 +20,6 @@ class shoppingManager {
             self.name = name
             self.check = false
         }
-        
         var name: String
         var check: Bool
     }

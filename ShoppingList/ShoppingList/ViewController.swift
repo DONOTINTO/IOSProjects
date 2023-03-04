@@ -62,4 +62,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         mainTextField.text = item.name
         addButton.setTitle("수정", for: .normal)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            shoppingManager.shared.remove(index: indexPath.row)
+        }
+    }
 }

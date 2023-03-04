@@ -33,6 +33,10 @@ class shoppingManager {
         shoppingList[index].name = name
     }
     
+    func remove(index: Int) {
+        shoppingList.remove(at: index)
+    }
+    
     func count() -> Int {
         return shoppingList.count
     }

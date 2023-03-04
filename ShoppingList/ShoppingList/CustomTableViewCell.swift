@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol cellButtonDelegate {
+    func buttonClicked()
+}
+
 class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     
+    @IBAction func checkButtonClicked(_ sender: UIButton) {
+        checkButton.isSelected.toggle()
+    }
 }

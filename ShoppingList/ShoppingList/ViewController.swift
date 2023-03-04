@@ -33,13 +33,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
         let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)
         cell.mainLabel.text = item.name
-        
         return cell
     }
-    
     
 }

@@ -30,6 +30,10 @@ class shoppingManager {
         shoppingList.append(shoppingItem)
     }
     
+    func update(name: String, index: Int) {
+        shoppingList[index].name = name
+    }
+    
     func count() -> Int {
         return shoppingList.count
     }

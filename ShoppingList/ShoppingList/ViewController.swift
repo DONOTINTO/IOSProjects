@@ -7,22 +7,36 @@
 
 import UIKit
 
+enum ButtonType {
+    case add
+    case update
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var mainTextField: UITextField!
     @IBOutlet weak var mainTableView: UITableView!
+    var buttonType = ButtonType.add
+    var itemIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        
     }
     
     @IBAction func addButtonClicked(_ sender: UIButton) {
         guard let name = mainTextField.text else { return }
-        shoppingManager.shared.append(name: name)
+        
+        if buttonType == .add {
+            shoppingManager.shared.append(name: name)
+        } else if buttonType == .update && itemIndex != nil {
+            shoppingManager.shared.update(name: name, index: itemIndex!)
+            addButton.setTitle("저장", for: .normal)
+        }
+        buttonType = .add
+        mainTextField.text = nil
         mainTableView.reloadData()
     }
 }
@@ -41,4 +55,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)
+        itemIndex = indexPath.row
+        buttonType = .update
+        mainTextField.text = item.name
+        addButton.setTitle("수정", for: .normal)
+    }
 }

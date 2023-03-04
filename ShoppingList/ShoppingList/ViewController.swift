@@ -20,15 +20,23 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func addButtonClicked(_ sender: UIButton) {
+        guard let name = mainTextField.text else { return }
+        shoppingManager.shared.append(name: name)
+        mainTableView.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return shoppingManager.shared.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
+        
+        let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)
+        cell.mainLabel.text = item.name
         
         return cell
     }

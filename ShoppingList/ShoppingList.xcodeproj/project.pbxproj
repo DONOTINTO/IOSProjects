@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC0ECFDC29B2F00D00F00F14 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0ECFDB29B2F00D00F00F14 /* CustomTableViewCell.swift */; };
-		AC0ECFDE29B2F39D00F00F14 /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0ECFDD29B2F39D00F00F14 /* ShoppingListItem.swift */; };
+		AC0ECFDE29B2F39D00F00F14 /* ShoppingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0ECFDD29B2F39D00F00F14 /* ShoppingManager.swift */; };
 		ACD5C9D829B2EB4400227B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5C9D729B2EB4400227B38 /* AppDelegate.swift */; };
 		ACD5C9DA29B2EB4400227B38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5C9D929B2EB4400227B38 /* SceneDelegate.swift */; };
 		ACD5C9DC29B2EB4400227B38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5C9DB29B2EB4400227B38 /* ViewController.swift */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		AC0ECFDB29B2F00D00F00F14 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		AC0ECFDD29B2F39D00F00F14 /* ShoppingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
+		AC0ECFDD29B2F39D00F00F14 /* ShoppingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingManager.swift; sourceTree = "<group>"; };
 		ACD5C9D429B2EB4400227B38 /* ShoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD5C9D729B2EB4400227B38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD5C9D929B2EB4400227B38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 				ACD5C9D929B2EB4400227B38 /* SceneDelegate.swift */,
 				ACD5C9DB29B2EB4400227B38 /* ViewController.swift */,
 				AC0ECFDB29B2F00D00F00F14 /* CustomTableViewCell.swift */,
-				AC0ECFDD29B2F39D00F00F14 /* ShoppingListItem.swift */,
+				AC0ECFDD29B2F39D00F00F14 /* ShoppingManager.swift */,
 				ACD5C9DD29B2EB4400227B38 /* Main.storyboard */,
 				ACD5C9E029B2EB4400227B38 /* Assets.xcassets */,
 				ACD5C9E229B2EB4400227B38 /* LaunchScreen.storyboard */,
@@ -146,7 +146,7 @@
 			files = (
 				ACD5C9DC29B2EB4400227B38 /* ViewController.swift in Sources */,
 				ACD5C9D829B2EB4400227B38 /* AppDelegate.swift in Sources */,
-				AC0ECFDE29B2F39D00F00F14 /* ShoppingListItem.swift in Sources */,
+				AC0ECFDE29B2F39D00F00F14 /* ShoppingManager.swift in Sources */,
 				AC0ECFDC29B2F00D00F00F14 /* CustomTableViewCell.swift in Sources */,
 				ACD5C9DA29B2EB4400227B38 /* SceneDelegate.swift in Sources */,
 			);

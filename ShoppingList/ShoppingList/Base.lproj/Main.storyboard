@@ -42,7 +42,9 @@
                                                             <state key="normal">
                                                                 <imageReference key="image" image="checkmark.square" catalog="system" symbolScale="large"/>
                                                             </state>
-                                                            <state key="selected" image="checkmark.square.fill" catalog="system"/>
+                                                            <state key="selected">
+                                                                <imageReference key="image" image="checkmark.square.fill" catalog="system" symbolScale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="checkButtonClicked:" destination="pCm-QL-Drl" eventType="touchUpInside" id="tb3-0T-l5b"/>
                                                             </connections>

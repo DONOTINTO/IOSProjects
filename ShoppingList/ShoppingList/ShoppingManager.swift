@@ -7,12 +7,9 @@
 
 import UIKit
 
-class shoppingManager {
- 
+class ShoppingManager {
     private init() {}
-    
-    static let shared = shoppingManager()
-    
+    static let shared = ShoppingManager()
     private var shoppingList: [ShoppingListItem] = []
     
     class ShoppingListItem {

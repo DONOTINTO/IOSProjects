@@ -30,9 +30,9 @@ class ViewController: UIViewController {
         guard let name = mainTextField.text else { return }
         
         if buttonType == .add {
-            shoppingManager.shared.append(name: name)
+            ShoppingManager.shared.append(name: name)
         } else if buttonType == .update && itemIndex != nil {
-            shoppingManager.shared.update(name: name, index: itemIndex!)
+            ShoppingManager.shared.update(name: name, index: itemIndex!)
             addButton.setTitle("저장", for: .normal)
         }
         
@@ -44,19 +44,19 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingManager.shared.count()
+        return ShoppingManager.shared.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
-        let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)
+        let item = ShoppingManager.shared.getShoppingItem(index: indexPath.row)
         cell.mainLabel.text = item.name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = shoppingManager.shared.getShoppingItem(index: indexPath.row)
+        let item = ShoppingManager.shared.getShoppingItem(index: indexPath.row)
         itemIndex = indexPath.row
         buttonType = .update
         mainTextField.text = item.name
@@ -65,7 +65,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            shoppingManager.shared.remove(index: indexPath.row)
+            ShoppingManager.shared.remove(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

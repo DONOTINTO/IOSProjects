@@ -8,7 +8,6 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     

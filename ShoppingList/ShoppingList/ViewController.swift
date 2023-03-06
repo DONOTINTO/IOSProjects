@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var mainTextField: UITextField!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var checkButton: UIButton!
     var buttonType = ButtonType.add
     var itemIndex: Int?
     
@@ -40,6 +41,32 @@ class ViewController: UIViewController {
         mainTextField.text = nil
         mainTableView.reloadData()
     }
+    
+    @IBAction func checkButtonClicked(_ sender: UIButton) {
+        let index = sender.tag
+        let shoppingListItem = ShoppingManager.shared.getShoppingItem(index: index)
+        
+        shoppingListItem.check.toggle()
+        ShoppingManager.shared.update(isChecked: shoppingListItem.check, index: index)
+        mainTableView.reloadData()
+    }
+    
+    @IBAction func sortButtonClicked(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "정렬 방식", message: "", preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let descending = UIAlertAction(title: "내림차순", style: .default, handler: { _ in
+            ShoppingManager.shared.highToLow()
+        })
+        let ascending = UIAlertAction(title: "오름차순", style: .default, handler: { _ in
+            ShoppingManager.shared.highToLow()
+        })
+        
+        alert.addAction(cancel)
+        alert.addAction(descending)
+        alert.addAction(ascending)
+        self.present(alert, animated: true)
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -49,9 +76,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
-        
+        cell.checkButton.tag = indexPath.row
         let item = ShoppingManager.shared.getShoppingItem(index: indexPath.row)
         cell.mainLabel.text = item.name
+        cell.configure(index: indexPath.row)
         return cell
     }
     

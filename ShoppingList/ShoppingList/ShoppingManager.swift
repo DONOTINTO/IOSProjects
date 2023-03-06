@@ -30,6 +30,10 @@ class ShoppingManager {
         shoppingList[index].name = name
     }
     
+    func update(isChecked: Bool, index: Int) {
+        shoppingList[index].check = isChecked
+    }
+    
     func remove(index: Int) {
         shoppingList.remove(at: index)
     }
@@ -40,5 +44,13 @@ class ShoppingManager {
     
     func getShoppingItem(index: Int) -> ShoppingListItem {
         return shoppingList[index]
+    }
+    
+    func highToLow() {
+        print("내림차순")
+    }
+    
+    func lowToHigh() {
+        print("오름차순")
     }
 }

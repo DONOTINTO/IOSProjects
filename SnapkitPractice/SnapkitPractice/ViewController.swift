@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     let addButton = UIButton()
     let mainTableView = UITableView()
     
+    var enItemList: [String] = [ "A", "B", "C", "D", "E"]
+    var numItemList: [String] = [ "1", "2", "3", "4", "5"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,19 +80,62 @@ class ViewController: UIViewController {
     }
     
     @objc func addButtonClicked() {
-        print("123")
+        let text = mainTextField.text!
+        
+        if !text.isEmpty {
+            if let _ = Int(text) {
+                numItemList.append(text)
+            } else {
+                enItemList.append(text)
+            }
+        }
+        mainTextField.text = ""
+        mainTableView.reloadData()
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "글자 목록"
+        } else {
+            return "숫자 목록"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return enItemList.count
+        } else {
+            return numItemList.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
         cell.makeUI()
+        
+        if indexPath.section == 0 {
+            cell.mainLabel.text = enItemList[indexPath.row]
+        } else {
+            cell.mainLabel.text = numItemList[indexPath.row]
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            numItemList.append(enItemList[indexPath.row])
+            enItemList.remove(at: indexPath.row)
+        } else {
+            enItemList.append(numItemList[indexPath.row])
+            numItemList.remove(at: indexPath.row)
+        }
+        mainTableView.reloadData()
     }
 }

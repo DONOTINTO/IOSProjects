@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zup-Tz-3ta">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f06-pY-QI4">
-                                <rect key="frame" x="0.0" y="115" width="393" height="703"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="659"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" rowHeight="83" id="pCm-QL-Drl" customClass="CustomTableViewCell" customModule="ShoppingList" customModuleProvider="target">
@@ -46,7 +46,7 @@
                                                                 <imageReference key="image" image="checkmark.square.fill" catalog="system" symbolScale="large"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="checkButtonClicked:" destination="pCm-QL-Drl" eventType="touchUpInside" id="tb3-0T-l5b"/>
+                                                                <action selector="checkButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CnG-yW-SY4"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS3-wg-uj3">
@@ -66,14 +66,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkButton" destination="gU9-h7-L0k" id="oHN-tF-OQ0"/>
+                                            <outlet property="checkButton" destination="gU9-h7-L0k" id="M9U-j5-QIy"/>
                                             <outlet property="mainLabel" destination="FS3-wg-uj3" id="d9o-pL-XN1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-bG-le9">
-                                <rect key="frame" x="10" y="69" width="373" height="36"/>
+                                <rect key="frame" x="10" y="113" width="373" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="쇼핑 항목을 작성하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfR-U0-sch">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="36"/>
@@ -111,6 +111,13 @@
                             <constraint firstItem="Tpf-bG-le9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="bv1-DM-M5x"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oA9-iQ-O87">
+                        <barButtonItem key="leftBarButtonItem" title="정렬" id="xlB-Bc-V1a">
+                            <connections>
+                                <action selector="sortButtonClicked:" destination="BYZ-38-t0r" id="IFD-PP-QHE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="X9J-lt-F73" id="jnz-Se-43q"/>
                         <outlet property="mainTableView" destination="f06-pY-QI4" id="PM0-NG-xg4"/>
@@ -118,6 +125,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991.60305343511448" y="3.5211267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uo0-Dq-zTT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zup-Tz-3ta" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3s-96-AnO">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zX0-dm-MWV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5F-Ht-1gN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="64.885496183206101" y="3.5211267605633805"/>
         </scene>

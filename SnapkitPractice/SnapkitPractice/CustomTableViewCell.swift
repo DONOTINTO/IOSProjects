@@ -14,7 +14,6 @@ class CustomTableViewCell: UITableViewCell {
     func makeUI() {
         contentView.addSubview(mainLabel)
         mainLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        mainLabel.text = "test"
         mainLabel.snp.makeConstraints {
             $0.leading.equalTo(self.contentView.snp.leading).offset(10)
             $0.trailing.equalTo(self.contentView.snp.trailing).offset(-10)

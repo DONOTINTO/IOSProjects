@@ -8,14 +8,18 @@
 import UIKit
 import SnapKit
 
+enum FirstName: Int {
+    case kim = 0
+    case park
+    case choi
+    case lee
+}
+
 class ViewController: UIViewController {
     
     let mainTextField = UITextField()
     let addButton = UIButton()
     let mainTableView = UITableView()
-    
-    var enItemList: [String] = [ "A", "B", "C", "D", "E"]
-    var numItemList: [String] = [ "1", "2", "3", "4", "5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,15 +84,11 @@ class ViewController: UIViewController {
     }
     
     @objc func addButtonClicked() {
-        let text = mainTextField.text!
+        let studentName = mainTextField.text!
         
-        if !text.isEmpty {
-            if let _ = Int(text) {
-                numItemList.append(text)
-            } else {
-                enItemList.append(text)
-            }
-        }
+        guard let studentFirstName = studentName.first else { return }
+        StudentManager.shared.append(firstName: studentFirstName, fullName: studentName)
+        
         mainTextField.text = ""
         mainTableView.reloadData()
     }
@@ -96,46 +96,46 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return StudentManager.shared.sectiontList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "글자 목록"
-        } else {
-            return "숫자 목록"
+        let firstName = FirstName(rawValue: section)
+        
+        switch firstName {
+        case .kim:  return "김씨 리스트"
+        case .park: return "박씨 리스트"
+        case .choi: return "최씨 리스트"
+        case .lee:  return "이씨 리스트"
+        case .none: return nil
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return enItemList.count
-        } else {
-            return numItemList.count
+        let firstName = FirstName(rawValue: section)
+        
+        switch firstName {
+        case .kim:  return StudentManager.shared.kimList.count
+        case .park: return StudentManager.shared.parkList.count
+        case .choi: return StudentManager.shared.choiList.count
+        case .lee:  return StudentManager.shared.leeList.count
+        case .none: return 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
-        cell.makeUI()
+        let firstName = FirstName(rawValue: indexPath.section)
+        switch firstName {
+        case .kim:  cell.mainLabel.text = StudentManager.shared.kimList[indexPath.row]
+        case .park: cell.mainLabel.text = StudentManager.shared.parkList[indexPath.row]
+        case .choi: cell.mainLabel.text = StudentManager.shared.choiList[indexPath.row]
+        case .lee:  cell.mainLabel.text = StudentManager.shared.leeList[indexPath.row]
+        case .none: break
+        }
         
-        if indexPath.section == 0 {
-            cell.mainLabel.text = enItemList[indexPath.row]
-        } else {
-            cell.mainLabel.text = numItemList[indexPath.row]
-        }
+        cell.makeUI()
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            numItemList.append(enItemList[indexPath.row])
-            enItemList.remove(at: indexPath.row)
-        } else {
-            enItemList.append(numItemList[indexPath.row])
-            numItemList.remove(at: indexPath.row)
-        }
-        mainTableView.reloadData()
     }
 }

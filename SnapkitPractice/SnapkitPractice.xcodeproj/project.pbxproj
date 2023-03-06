@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC623EDF29B5F9B70019D01A /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC623EDE29B5F9B70019D01A /* StudentManager.swift */; };
 		AC6CD3AC29B5BB6300B3A1B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CD3AB29B5BB6300B3A1B1 /* AppDelegate.swift */; };
 		AC6CD3AE29B5BB6300B3A1B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CD3AD29B5BB6300B3A1B1 /* SceneDelegate.swift */; };
 		AC6CD3B029B5BB6300B3A1B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CD3AF29B5BB6300B3A1B1 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC623EDE29B5F9B70019D01A /* StudentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 		AC6CD3A829B5BB6300B3A1B1 /* SnapkitPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapkitPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6CD3AB29B5BB6300B3A1B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC6CD3AD29B5BB6300B3A1B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				AC6CD3B429B5BB6300B3A1B1 /* Assets.xcassets */,
 				AC6CD3B629B5BB6300B3A1B1 /* LaunchScreen.storyboard */,
 				AC6CD3B929B5BB6300B3A1B1 /* Info.plist */,
+				AC623EDE29B5F9B70019D01A /* StudentManager.swift */,
 			);
 			path = SnapkitPractice;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6CD3B029B5BB6300B3A1B1 /* ViewController.swift in Sources */,
+				AC623EDF29B5F9B70019D01A /* StudentManager.swift in Sources */,
 				AC6CD3AC29B5BB6300B3A1B1 /* AppDelegate.swift in Sources */,
 				AC6CD3C329B5CACF00B3A1B1 /* CustomTableViewCell.swift in Sources */,
 				AC6CD3AE29B5BB6300B3A1B1 /* SceneDelegate.swift in Sources */,

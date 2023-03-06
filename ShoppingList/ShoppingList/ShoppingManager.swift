@@ -47,10 +47,18 @@ class ShoppingManager {
     }
     
     func highToLow() {
-        print("내림차순")
+        // filter -> 체크 / 미체크 분리
+        // 각 배열을 정렬
+        // 미체크 배열 + 체크된 배열
+        let checkedList = shoppingList.filter { $0.check }.sorted { $0.name > $1.name }
+        let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name > $1.name }
+        shoppingList = unCheckedList + checkedList
     }
     
     func lowToHigh() {
         print("오름차순")
+        let checkedList = shoppingList.filter { $0.check }.sorted { $0.name < $1.name }
+        let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name < $1.name }
+        shoppingList = unCheckedList + checkedList
     }
 }

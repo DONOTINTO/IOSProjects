@@ -56,9 +56,11 @@ class ViewController: UIViewController {
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let descending = UIAlertAction(title: "내림차순", style: .default, handler: { _ in
             ShoppingManager.shared.highToLow()
+            self.mainTableView.reloadData()
         })
         let ascending = UIAlertAction(title: "오름차순", style: .default, handler: { _ in
-            ShoppingManager.shared.highToLow()
+            ShoppingManager.shared.lowToHigh()
+            self.mainTableView.reloadData()
         })
         
         alert.addAction(cancel)

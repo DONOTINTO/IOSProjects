@@ -9,9 +9,12 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkButton: CheckButton!
     
     func configure(index: Int) {
-        checkButton.isSelected = ShoppingManager.shared.getShoppingItem(index: index).check
+        guard let section = checkButton.section else { return }
+        guard let row = checkButton.row else { return }
+        guard let item = ShoppingManager.shared.getShoppingItem(section: section, index: row) else { return }
+        checkButton.isSelected = item.check
     }
 }

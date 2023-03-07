@@ -32,7 +32,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lfu-1a-7Vf">
                                                     <rect key="frame" x="5" y="10" width="383" height="63"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU9-h7-L0k">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU9-h7-L0k" customClass="CheckButton" customModule="ShoppingList" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="gU9-h7-L0k" secondAttribute="height" multiplier="1:1" id="cJb-Js-qBF"/>

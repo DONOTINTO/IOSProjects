@@ -17,8 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var mainTextField: UITextField!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var checkButton: UIButton!
+    
     var buttonType = ButtonType.add
+    var itemSection: Int?
     var itemIndex: Int?
     
     override func viewDidLoad() {
@@ -31,23 +32,26 @@ class ViewController: UIViewController {
         guard let name = mainTextField.text else { return }
         
         if buttonType == .add {
+            // 추가할 시 uncheckedList로 추가됨
             ShoppingManager.shared.append(name: name)
         } else if buttonType == .update && itemIndex != nil {
-            ShoppingManager.shared.update(name: name, index: itemIndex!)
+            // check uncheck 섹션 구분
+            // 해당 section 및 해당 row에 해당하는 데이터 수정
+            ShoppingManager.shared.update(name: name, section: itemSection!, index: itemIndex!)
             addButton.setTitle("저장", for: .normal)
         }
-        
         buttonType = .add
         mainTextField.text = nil
         mainTableView.reloadData()
     }
     
-    @IBAction func checkButtonClicked(_ sender: UIButton) {
-        let index = sender.tag
-        let shoppingListItem = ShoppingManager.shared.getShoppingItem(index: index)
+    @IBAction func checkButtonClicked(_ sender: CheckButton) {
+        guard let row = sender.row else { return }
+        guard let section = sender.section else { return }
+        guard let shoppingListItem = ShoppingManager.shared.getShoppingItem(section: section, index: row) else { return }
         
         shoppingListItem.check.toggle()
-        ShoppingManager.shared.update(isChecked: shoppingListItem.check, index: index)
+        ShoppingManager.shared.update(isChecked: shoppingListItem.check, section: section, index: row)
         mainTableView.reloadData()
     }
     
@@ -62,7 +66,6 @@ class ViewController: UIViewController {
             ShoppingManager.shared.lowToHigh()
             self.mainTableView.reloadData()
         })
-        
         alert.addAction(cancel)
         alert.addAction(descending)
         alert.addAction(ascending)
@@ -72,30 +75,41 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        ShoppingManager.shared.sectionList.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        ShoppingManager.shared.sectionList[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ShoppingManager.shared.count()
+        return ShoppingManager.shared.count(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
-        cell.checkButton.tag = indexPath.row
-        let item = ShoppingManager.shared.getShoppingItem(index: indexPath.row)
-        cell.mainLabel.text = item.name
+        
+        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, index: indexPath.row)
+        cell.checkButton.section = indexPath.section
+        cell.checkButton.row = indexPath.row
+        cell.mainLabel.text = item?.name
         cell.configure(index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = ShoppingManager.shared.getShoppingItem(index: indexPath.row)
+        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, index: indexPath.row)
+        itemSection = indexPath.section
         itemIndex = indexPath.row
         buttonType = .update
-        mainTextField.text = item.name
+        mainTextField.text = item?.name
         addButton.setTitle("수정", for: .normal)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ShoppingManager.shared.remove(index: indexPath.row)
+            ShoppingManager.shared.remove(section: indexPath.section, index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

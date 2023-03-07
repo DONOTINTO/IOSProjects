@@ -34,7 +34,6 @@ class StudentManager {
             }
         }
         
-        
         for index in 0 ..< nameList.count {
             // 해당 성씨가 존재한다면 이름 리스트에만 추가
             if sectionList[index] == firstName {

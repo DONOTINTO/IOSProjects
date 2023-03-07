@@ -8,13 +8,6 @@
 import UIKit
 import SnapKit
 
-enum FirstName: Int {
-    case kim = 0
-    case park
-    case choi
-    case lee
-}
-
 class ViewController: UIViewController {
     
     let mainTextField = UITextField()
@@ -89,9 +82,6 @@ class ViewController: UIViewController {
         
         guard let studentFirstName = studentName.first else { return }
         StudentManager.shared.testAppend(firstName: String(studentFirstName), fullName: studentName)
-        
-        print(StudentManager.shared.nameList)
-        print(StudentManager.shared.sectionList)
         mainTextField.text = ""
         mainTableView.reloadData()
     }
@@ -115,7 +105,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let firstNameList = StudentManager.shared.nameList[indexPath.section]
         cell.mainLabel.text = firstNameList[indexPath.row]
-        
         cell.makeUI()
         return cell
     }

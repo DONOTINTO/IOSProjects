@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     let mainTextField = UITextField()
     let addButton = UIButton()
+    let testAddButton = UIButton()
     let mainTableView = UITableView()
     
     override func viewDidLoad() {
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
         addButton.setTitle("추가", for: .normal)
         addButton.setTitleColor(.white, for: .normal)
         addButton.backgroundColor = .link
-        
+
         view.addSubview(stackView)
         view.addSubview(mainTableView)
         
@@ -87,8 +88,10 @@ class ViewController: UIViewController {
         let studentName = mainTextField.text!
         
         guard let studentFirstName = studentName.first else { return }
-        StudentManager.shared.append(firstName: studentFirstName, fullName: studentName)
+        StudentManager.shared.testAppend(firstName: String(studentFirstName), fullName: studentName)
         
+        print(StudentManager.shared.nameList)
+        print(StudentManager.shared.sectionList)
         mainTextField.text = ""
         mainTableView.reloadData()
     }
@@ -96,44 +99,22 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return StudentManager.shared.sectiontList.count
+        return StudentManager.shared.sectionList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let firstName = FirstName(rawValue: section)
-        
-        switch firstName {
-        case .kim:  return "김씨 리스트"
-        case .park: return "박씨 리스트"
-        case .choi: return "최씨 리스트"
-        case .lee:  return "이씨 리스트"
-        case .none: return nil
-        }
+        return StudentManager.shared.sectionList[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let firstName = FirstName(rawValue: section)
-        
-        switch firstName {
-        case .kim:  return StudentManager.shared.kimList.count
-        case .park: return StudentManager.shared.parkList.count
-        case .choi: return StudentManager.shared.choiList.count
-        case .lee:  return StudentManager.shared.leeList.count
-        case .none: return 0
-        }
+        return StudentManager.shared.nameList[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
-        let firstName = FirstName(rawValue: indexPath.section)
-        switch firstName {
-        case .kim:  cell.mainLabel.text = StudentManager.shared.kimList[indexPath.row]
-        case .park: cell.mainLabel.text = StudentManager.shared.parkList[indexPath.row]
-        case .choi: cell.mainLabel.text = StudentManager.shared.choiList[indexPath.row]
-        case .lee:  cell.mainLabel.text = StudentManager.shared.leeList[indexPath.row]
-        case .none: break
-        }
+        let firstNameList = StudentManager.shared.nameList[indexPath.section]
+        cell.mainLabel.text = firstNameList[indexPath.row]
         
         cell.makeUI()
         return cell

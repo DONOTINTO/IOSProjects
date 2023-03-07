@@ -13,19 +13,41 @@ class StudentManager {
     
     private init() {}
     
-    var sectiontList: [String] = ["김", "박", "최", "이"]
-    var kimList: [String] = []
-    var parkList: [String] = []
-    var choiList: [String] = []
-    var leeList: [String] = []
+    var nameList: [[String]] = []
+    var sectionList: [String] = []
     
-    func append(firstName: Character, fullName: String) {
-        switch firstName {
-        case "김": StudentManager.shared.kimList.append(fullName); break
-        case "박": StudentManager.shared.parkList.append(fullName); break
-        case "최": StudentManager.shared.choiList.append(fullName); break
-        case "이": StudentManager.shared.leeList.append(fullName); break
-        default: break
+    func testAppend(firstName: String, fullName: String) {
+        var firstNameExist = false
+        
+        // 이름 리스트와 섹션 리스트에 아직 아무것도 없을 때
+        if nameList.isEmpty && sectionList.isEmpty {
+            nameList.append([fullName])
+            sectionList.append(firstName)
+            return
+        }
+        
+        // 성 씨가 섹션 리스트에 존재하는지 체크
+        for index in 0 ..< sectionList.count {
+            if sectionList[index] == firstName {
+                firstNameExist = true
+                break
+            }
+        }
+        
+        
+        for index in 0 ..< nameList.count {
+            // 해당 성씨가 존재한다면 이름 리스트에만 추가
+            if sectionList[index] == firstName {
+                nameList[index].append(fullName)
+                break
+            }
+            
+            // 해당 성씨가 존재하지 않으면 이름 리스트, 섹션 리스트 추가
+            if !firstNameExist {
+                nameList.append([fullName])
+                sectionList.append(firstName)
+                break
+            }
         }
     }
 }

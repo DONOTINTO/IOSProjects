@@ -14,7 +14,7 @@ class CustomTableViewCell: UITableViewCell {
     func configure(index: Int) {
         guard let section = checkButton.section else { return }
         guard let row = checkButton.row else { return }
-        guard let item = ShoppingManager.shared.getShoppingItem(section: section, index: row) else { return }
+        guard let item = ShoppingManager.shared.getShoppingItem(section: section, row: row) else { return }
         checkButton.isSelected = item.check
     }
 }

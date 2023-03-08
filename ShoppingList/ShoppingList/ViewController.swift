@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     var buttonType = ButtonType.add
     var itemSection: Int?
-    var itemIndex: Int?
+    var itemRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +34,12 @@ class ViewController: UIViewController {
         if buttonType == .add {
             // 추가할 시 uncheckedList로 추가됨
             ShoppingManager.shared.append(name: name)
-        } else if buttonType == .update && itemIndex != nil {
+        } else if buttonType == .update && itemRow != nil {
             // check uncheck 섹션 구분
             // 해당 section 및 해당 row에 해당하는 데이터 수정
-            ShoppingManager.shared.update(name: name, section: itemSection!, index: itemIndex!)
+            guard let section = itemSection else { return }
+            guard let row = itemRow else { return }
+            ShoppingManager.shared.update(name: name, section: section, row: row)
             addButton.setTitle("저장", for: .normal)
         }
         buttonType = .add
@@ -48,10 +50,10 @@ class ViewController: UIViewController {
     @IBAction func checkButtonClicked(_ sender: CheckButton) {
         guard let row = sender.row else { return }
         guard let section = sender.section else { return }
-        guard let shoppingListItem = ShoppingManager.shared.getShoppingItem(section: section, index: row) else { return }
+        guard let shoppingListItem = ShoppingManager.shared.getShoppingItem(section: section, row: row) else { return }
         
         shoppingListItem.check.toggle()
-        ShoppingManager.shared.update(isChecked: shoppingListItem.check, section: section, index: row)
+        ShoppingManager.shared.update(isChecked: shoppingListItem.check, section: section, row: row)
         mainTableView.reloadData()
     }
     
@@ -90,7 +92,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.mainTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
-        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, index: indexPath.row)
+        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, row: indexPath.row)
         cell.checkButton.section = indexPath.section
         cell.checkButton.row = indexPath.row
         cell.mainLabel.text = item?.name
@@ -99,9 +101,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, index: indexPath.row)
+        let item = ShoppingManager.shared.getShoppingItem(section: indexPath.section, row: indexPath.row)
         itemSection = indexPath.section
-        itemIndex = indexPath.row
+        itemRow = indexPath.row
         buttonType = .update
         mainTextField.text = item?.name
         addButton.setTitle("수정", for: .normal)
@@ -109,7 +111,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ShoppingManager.shared.remove(section: indexPath.section, index: indexPath.row)
+            ShoppingManager.shared.remove(section: indexPath.section, row: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

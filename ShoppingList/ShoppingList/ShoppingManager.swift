@@ -34,44 +34,42 @@ class ShoppingManager {
         uncheckedList.append(shoppingItem)
     }
     
-    func update(name: String, section: Int, index: Int) {
+    func update(name: String, section: Int, row: Int) {
         let checkState = CheckEnum(rawValue: section)
         
         switch checkState {
-        case .checked: checkedList[index].name = name
-        case .unchecked: uncheckedList[index].name = name
+        case .checked: checkedList[row].name = name
+        case .unchecked: uncheckedList[row].name = name
         default: return
         }
     }
     
-    func update(isChecked: Bool, section: Int, index: Int) {
+    func update(isChecked: Bool, section: Int, row: Int) {
         let checkState = CheckEnum(rawValue: section)
         
         switch checkState {
         case .checked:
-            checkedList[index].check = isChecked
+            checkedList[row].check = isChecked
             
-            let item = checkedList[index]
-            checkedList.remove(at: index)
+            let item = checkedList[row]
+            checkedList.remove(at: row)
             uncheckedList.append(item)
         case .unchecked:
-            uncheckedList[index].check = isChecked
+            uncheckedList[row].check = isChecked
             
-            print("section: \(section)")
-            print("row: \(index)")
-            let item = uncheckedList[index]
-            uncheckedList.remove(at: index)
+            let item = uncheckedList[row]
+            uncheckedList.remove(at: row)
             checkedList.append(item)
         default: return
         }
     }
     
-    func remove(section: Int, index: Int) {
+    func remove(section: Int, row: Int) {
         let checkState = CheckEnum(rawValue: section)
         
         switch checkState {
-        case .checked: checkedList.remove(at: index)
-        case .unchecked: uncheckedList.remove(at: index)
+        case .checked: checkedList.remove(at: row)
+        case .unchecked: uncheckedList.remove(at: row)
         default: return
         }
     }
@@ -86,12 +84,12 @@ class ShoppingManager {
         }
     }
     
-    func getShoppingItem(section: Int, index: Int) -> ShoppingListItem? {
+    func getShoppingItem(section: Int, row: Int) -> ShoppingListItem? {
         let checkState = CheckEnum(rawValue: section)
         
         switch checkState {
-        case .checked: return checkedList[index]
-        case .unchecked: return uncheckedList[index]
+        case .checked: return checkedList[row]
+        case .unchecked: return uncheckedList[row]
         default: return nil
         }
     }
@@ -100,17 +98,17 @@ class ShoppingManager {
         // filter -> 체크 / 미체크 분리
         // 각 배열을 정렬
         // 미체크 배열 + 체크된 배열
-//        let checkedList = shoppingList.filter { $0.check }.sorted { $0.name > $1.name }
-//        let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name > $1.name }
-//        shoppingList = unCheckedList + checkedList
+        // let checkedList = shoppingList.filter { $0.check }.sorted { $0.name > $1.name }
+        // let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name > $1.name }
+        // shoppingList = unCheckedList + checkedList
         checkedList.sort { $0.name > $1.name }
         uncheckedList.sort { $0.name > $1.name }
     }
     
     func lowToHigh() {
-//        let checkedList = shoppingList.filter { $0.check }.sorted { $0.name < $1.name }
-//        let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name < $1.name }
-//        shoppingList = unCheckedList + checkedList
+        // let checkedList = shoppingList.filter { $0.check }.sorted { $0.name < $1.name }
+        // let unCheckedList = shoppingList.filter { !$0.check }.sorted { $0.name < $1.name }
+        // shoppingList = unCheckedList + checkedList
         checkedList.sort { $0.name < $1.name }
         uncheckedList.sort { $0.name < $1.name }
     }

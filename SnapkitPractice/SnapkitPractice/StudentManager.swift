@@ -16,7 +16,7 @@ class StudentManager {
     var nameList: [[String]] = []
     var sectionList: [String] = []
     
-    func testAppend(firstName: String, fullName: String) {
+    func isFirstNameExist(firstName: String, fullName: String) {
         var firstNameExist = false
         
         // 이름 리스트와 섹션 리스트에 아직 아무것도 없을 때

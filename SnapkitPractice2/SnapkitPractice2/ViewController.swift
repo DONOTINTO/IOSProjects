@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         leftTopStackView.spacing = 20
         leftTopStackView.backgroundColor = .gray
         leftTopStackView.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(30)
+            $0.leading.equalTo(view.snp.leading).offset(30)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
             $0.trailing.equalTo(rightTopStackView.snp.leading).offset(-30)
             $0.bottom.equalTo(centerView.snp.top).offset(-30)
@@ -98,11 +98,10 @@ class ViewController: UIViewController {
         rightTopStackView.backgroundColor = .gray
         rightTopStackView.distribution = .fillEqually
         
-        rightTopStackView.snp.makeConstraints{
+        rightTopStackView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
-            $0.height.equalTo(leftTopView.snp.height).dividedBy(2)
             $0.leading.equalTo(leftTopStackView.snp.trailing).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-30)
+            $0.trailing.equalTo(view.snp.trailing).offset(-30)
         }
         
         rightTopButton.backgroundColor = .purple
@@ -115,10 +114,10 @@ class ViewController: UIViewController {
         //센터 뷰
         centerView.backgroundColor = .systemBlue
         
-        let centerViewRatio:Double = 8/15
+        let centerViewRatio: Double = 8 / 15
         centerView.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-30)
+            $0.leading.equalTo(view.snp.leading).offset(30)
+            $0.trailing.equalTo(view.snp.trailing).offset(-30)
             $0.height.equalTo(centerView.snp.width).multipliedBy(centerViewRatio)
         }
         
@@ -140,8 +139,8 @@ class ViewController: UIViewController {
         
         bottomStackView.snp.makeConstraints {
             $0.top.equalTo(centerView.snp.bottom).offset(30)
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-30)
+            $0.leading.equalTo(view.snp.leading).offset(30)
+            $0.trailing.equalTo(view.snp.trailing).offset(-30)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-30)
         }
         

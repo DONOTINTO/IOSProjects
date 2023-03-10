@@ -23,7 +23,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.register(MemberTableViewCell.self , forCellReuseIdentifier: "MemberCell")
+        
+        //초기 설정
+        allCategoryButton.isSelected = true
+        allCategoryButton.backgroundColor = .systemBlue
+        favoriteCategoryButton.isSelected = false
+        favoriteCategoryButton.backgroundColor = .white
+        
         makeUI()
+        addAction()
     }
 
     func makeUI() {
@@ -60,6 +69,11 @@ class ViewController: UIViewController {
         allCategoryButton.titleLabel?.font = .systemFont(ofSize: 15)
         allCategoryButton.layer.cornerRadius = 5
         allCategoryButton.layer.borderWidth = 2
+        if allCategoryButton.isSelected {
+            allCategoryButton.backgroundColor = .systemBlue
+        } else {
+            allCategoryButton.backgroundColor = .white
+        }
         
         // Favorite 선택 버튼 설정
         favoriteCategoryButton.setTitle("Favorite", for: .normal)
@@ -122,15 +136,53 @@ class ViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
+    
+    func addAction() {
+        allCategoryButton.addTarget(self, action: #selector(allCategoryButtonClicked), for: .touchUpInside)
+        favoriteCategoryButton.addTarget(self, action: #selector(favoriteCategoryButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func allCategoryButtonClicked() {
+        allCategoryButton.isSelected.toggle()
+        favoriteCategoryButton.isSelected = !allCategoryButton.isSelected
+        if allCategoryButton.isSelected {
+            allCategoryButton.backgroundColor = .systemBlue
+            favoriteCategoryButton.backgroundColor = .white
+        } else {
+            favoriteCategoryButton.backgroundColor = .systemBlue
+            allCategoryButton.backgroundColor = .white
+        }
+    }
+    
+    @objc func favoriteCategoryButtonClicked() {
+        favoriteCategoryButton.isSelected.toggle()
+        allCategoryButton.isSelected = !favoriteCategoryButton.isSelected
+        if allCategoryButton.isSelected {
+            allCategoryButton.backgroundColor = .systemBlue
+            favoriteCategoryButton.backgroundColor = .white
+        } else {
+            favoriteCategoryButton.backgroundColor = .systemBlue
+            allCategoryButton.backgroundColor = .white
+        }
+    }
 }
 
 extension UIViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as? MemberTableViewCell else { return UITableViewCell() }
+        
+        cell.makeUI()
+        
+        return cell
     }
     
     

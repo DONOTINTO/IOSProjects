@@ -13,6 +13,8 @@
 		ACE2F1D829BB11460009E0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE2F1D729BB11460009E0A3 /* Assets.xcassets */; };
 		ACE2F1DB29BB11460009E0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE2F1D929BB11460009E0A3 /* LaunchScreen.storyboard */; };
 		ACE2F1E729BB12D10009E0A3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACE2F1E629BB12D10009E0A3 /* SnapKit */; };
+		ACE2F1E929BB2E2F0009E0A3 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2F1E829BB2E2F0009E0A3 /* MemberTableViewCell.swift */; };
+		ACE2F1EB29BB317C0009E0A3 /* memberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2F1EA29BB317C0009E0A3 /* memberManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		ACE2F1D729BB11460009E0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACE2F1DA29BB11460009E0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACE2F1DC29BB11460009E0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACE2F1E829BB2E2F0009E0A3 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		ACE2F1EA29BB317C0009E0A3 /* memberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				ACE2F1CE29BB11450009E0A3 /* AppDelegate.swift */,
 				ACE2F1D029BB11450009E0A3 /* SceneDelegate.swift */,
 				ACE2F1D229BB11450009E0A3 /* ViewController.swift */,
+				ACE2F1E829BB2E2F0009E0A3 /* MemberTableViewCell.swift */,
+				ACE2F1EA29BB317C0009E0A3 /* memberManager.swift */,
 				ACE2F1D729BB11460009E0A3 /* Assets.xcassets */,
 				ACE2F1D929BB11460009E0A3 /* LaunchScreen.storyboard */,
 				ACE2F1DC29BB11460009E0A3 /* Info.plist */,
@@ -143,8 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE2F1D329BB11450009E0A3 /* ViewController.swift in Sources */,
+				ACE2F1EB29BB317C0009E0A3 /* memberManager.swift in Sources */,
 				ACE2F1CF29BB11450009E0A3 /* AppDelegate.swift in Sources */,
 				ACE2F1D129BB11450009E0A3 /* SceneDelegate.swift in Sources */,
+				ACE2F1E929BB2E2F0009E0A3 /* MemberTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

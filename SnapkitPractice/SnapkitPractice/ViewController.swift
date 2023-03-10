@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         let studentName = mainTextField.text!
         
         guard let studentFirstName = studentName.first else { return }
-        StudentManager.shared.isFirstNameExist(firstName: String(studentFirstName), fullName: studentName)
+        StudentManager.shared.append(firstName: String(studentFirstName), fullName: studentName)
         mainTextField.text = ""
         mainTableView.reloadData()
     }

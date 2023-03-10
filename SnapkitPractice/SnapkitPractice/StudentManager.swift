@@ -16,8 +16,8 @@ class StudentManager {
     var nameList: [[String]] = []
     var sectionList: [String] = []
     
-    func isFirstNameExist(firstName: String, fullName: String) {
-        var firstNameExist = false
+    func append(firstName: String, fullName: String) {
+        var isFirstNameExist = false
         
         // 이름 리스트와 섹션 리스트에 아직 아무것도 없을 때
         if nameList.isEmpty && sectionList.isEmpty {
@@ -29,7 +29,7 @@ class StudentManager {
         // 성 씨가 섹션 리스트에 존재하는지 체크
         for index in 0 ..< sectionList.count {
             if sectionList[index] == firstName {
-                firstNameExist = true
+                isFirstNameExist = true
                 break
             }
         }
@@ -42,7 +42,7 @@ class StudentManager {
             }
             
             // 해당 성씨가 존재하지 않으면 이름 리스트, 섹션 리스트 추가
-            if !firstNameExist {
+            if !isFirstNameExist {
                 nameList.append([fullName])
                 sectionList.append(firstName)
                 break

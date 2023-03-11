@@ -15,12 +15,12 @@ class MemberManger {
         var name: String
         var phoneNumber: Int
         var memo: String
+        var isFavorite: Bool
     }
     
     private var memberList: [Member] = []
-    private var favoriteMemberList: [Member] = []
     
     func count() -> Int {
-        return 1
+        return memberList.count
     }
 }

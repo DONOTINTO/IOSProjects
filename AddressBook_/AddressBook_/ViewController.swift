@@ -140,6 +140,7 @@ class ViewController: UIViewController {
     func addAction() {
         allCategoryButton.addTarget(self, action: #selector(allCategoryButtonClicked), for: .touchUpInside)
         favoriteCategoryButton.addTarget(self, action: #selector(favoriteCategoryButtonClicked), for: .touchUpInside)
+        addMemberButton.addTarget(self, action: #selector(addMemberButtonClicked), for: .touchUpInside)
     }
     
     @objc func allCategoryButtonClicked() {
@@ -165,11 +166,17 @@ class ViewController: UIViewController {
             allCategoryButton.backgroundColor = .white
         }
     }
+    
+    @objc func addMemberButtonClicked() {
+        let detailVC = DetailViewController()
+        detailVC.modalPresentationStyle = .fullScreen
+        present(detailVC, animated: true)
+    }
 }
 
 extension UIViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return MemberManger.shared.count()
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

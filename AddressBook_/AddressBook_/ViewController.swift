@@ -8,19 +8,6 @@
 import UIKit
 import SnapKit
 
-extension UIViewController {
-    func showAlert(title: String, message: String, dismissPresentingView: Bool = false ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "확인", style: .cancel) { _ in
-            if dismissPresentingView {
-                self.presentingViewController?.dismiss(animated: true)
-            }
-        }
-        alert.addAction(okButton)
-        present(alert, animated: true)
-    }
-}
-
 class ViewController: UIViewController, NotifyViewDiss {
     func reloadTable() {
         mainTableView.reloadData()
@@ -71,7 +58,8 @@ class ViewController: UIViewController, NotifyViewDiss {
         
         // 텍스트 필드 설정
         mainTextField.font = .systemFont(ofSize: 15)
-        mainTextField.placeholder = "  이름 또는 연락처를 입력해주세요."
+        mainTextField.placeholder = "이름 또는 연락처를 입력해주세요."
+        mainTextField.setPlaceholder(color: .lightGray)
         mainTextField.layer.cornerRadius = 5
         mainTextField.layer.borderWidth = 2
         mainTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
@@ -84,9 +72,18 @@ class ViewController: UIViewController, NotifyViewDiss {
         findMemberButton.layer.cornerRadius = 5
         findMemberButton.layer.borderWidth = 2
         
+        // 찾기 버튼 이미지 설정
+        findMemberButton.imageView!.snp.makeConstraints {
+            $0.leading.equalTo(5)
+            $0.trailing.equalTo(-5)
+            $0.top.equalTo(2)
+            $0.bottom.equalTo(-2)
+        }
+        
         // All 선택 버튼 설정
         allCategoryButton.setTitle("ALL", for: .normal)
         allCategoryButton.setTitleColor(.black, for: .normal)
+        allCategoryButton.setTitleColor(.systemBlue, for: .highlighted)
         allCategoryButton.titleLabel?.font = .systemFont(ofSize: 15)
         allCategoryButton.layer.cornerRadius = 5
         allCategoryButton.layer.borderWidth = 2
@@ -99,6 +96,7 @@ class ViewController: UIViewController, NotifyViewDiss {
         // Favorite 선택 버튼 설정
         favoriteCategoryButton.setTitle("Favorite", for: .normal)
         favoriteCategoryButton.setTitleColor(.black, for: .normal)
+        favoriteCategoryButton.setTitleColor(.systemBlue, for: .highlighted)
         favoriteCategoryButton.titleLabel?.font = .systemFont(ofSize: 15)
         favoriteCategoryButton.layer.cornerRadius = 5
         favoriteCategoryButton.layer.borderWidth = 2
@@ -198,7 +196,6 @@ class ViewController: UIViewController, NotifyViewDiss {
 
 extension UIViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(MemberManger.shared.count())
         return MemberManger.shared.count()
     }
     

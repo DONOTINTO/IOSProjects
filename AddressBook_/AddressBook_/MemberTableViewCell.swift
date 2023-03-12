@@ -80,6 +80,7 @@ class MemberTableViewCell: UITableViewCell {
         // 메모 정보 레이블
         memoCheckButton.backgroundColor = .white
         memoCheckButton.setTitleColor(.black, for: .normal)
+        memoCheckButton.setTitleColor(.systemBlue, for: .highlighted)
         memoCheckButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         memoCheckButton.setTitle("메모 확인하기", for: .normal)
         memoCheckButton.layer.borderWidth = 1

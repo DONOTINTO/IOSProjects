@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC31292929BC4FBA00F21CFE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31292829BC4FBA00F21CFE /* DetailViewController.swift */; };
+		AC31292B29BD89C200F21CFE /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31292A29BD89C200F21CFE /* UIKitExtension.swift */; };
 		ACE2F1CF29BB11450009E0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2F1CE29BB11450009E0A3 /* AppDelegate.swift */; };
 		ACE2F1D129BB11450009E0A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2F1D029BB11450009E0A3 /* SceneDelegate.swift */; };
 		ACE2F1D329BB11450009E0A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2F1D229BB11450009E0A3 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		AC31292829BC4FBA00F21CFE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC31292A29BD89C200F21CFE /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		ACE2F1CB29BB11450009E0A3 /* AddressBook_.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressBook_.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE2F1CE29BB11450009E0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE2F1D029BB11450009E0A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				ACE2F1D229BB11450009E0A3 /* ViewController.swift */,
 				AC31292829BC4FBA00F21CFE /* DetailViewController.swift */,
 				ACE2F1E829BB2E2F0009E0A3 /* MemberTableViewCell.swift */,
+				AC31292A29BD89C200F21CFE /* UIKitExtension.swift */,
 				ACE2F1EA29BB317C0009E0A3 /* memberManager.swift */,
 				ACE2F1D729BB11460009E0A3 /* Assets.xcassets */,
 				ACE2F1D929BB11460009E0A3 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				ACE2F1CF29BB11450009E0A3 /* AppDelegate.swift in Sources */,
 				AC31292929BC4FBA00F21CFE /* DetailViewController.swift in Sources */,
 				ACE2F1D129BB11450009E0A3 /* SceneDelegate.swift in Sources */,
+				AC31292B29BD89C200F21CFE /* UIKitExtension.swift in Sources */,
 				ACE2F1E929BB2E2F0009E0A3 /* MemberTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

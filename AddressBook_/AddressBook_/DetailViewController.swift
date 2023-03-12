@@ -127,8 +127,8 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .white
         
         // 기본 텍스트 설정
-        backButton.setTitle("뒤로가기", for: .normal)
-        saveButton.setTitle("저장", for: .normal)
+        backButton.setTitle("back", for: .normal)
+        saveButton.setTitle("save", for: .normal)
         addImageButton.setTitle("사진 등록", for: .normal)
         yesButton.setTitle("YES", for: .normal)
         noButton.setTitle("NO", for: .normal)
@@ -140,6 +140,7 @@ class DetailViewController: UIViewController {
         // 뒤로가기 버튼
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         backButton.setTitleColor(.black, for: .normal)
+        backButton.setTitleColor(.systemBlue, for: .highlighted)
         backButton.layer.borderWidth = 1
         backButton.clipsToBounds = true
         backButton.layer.cornerRadius = 5
@@ -147,6 +148,7 @@ class DetailViewController: UIViewController {
         // 저장 버튼
         saveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         saveButton.setTitleColor(.black, for: .normal)
+        saveButton.setTitleColor(.systemBlue, for: .highlighted)
         saveButton.layer.borderWidth = 1
         saveButton.clipsToBounds = true
         saveButton.layer.cornerRadius = 5
@@ -154,13 +156,15 @@ class DetailViewController: UIViewController {
         // 이미지 뷰
         let testImage = UIImage(systemName: "pencil")
         memberImageView.image = testImage
-        memberImageView.backgroundColor = .black
+        memberImageView.backgroundColor = .white
+        memberImageView.layer.borderWidth = 1
         memberImageView.clipsToBounds = true
         memberImageView.layer.cornerRadius = (view.frame.width / 2.5) / 2
         
         // 이미지 저장 버튼
         addImageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         addImageButton.setTitleColor(.black, for: .normal)
+        addImageButton.setTitleColor(.systemBlue, for: .highlighted)
         addImageButton.layer.borderWidth = 1
         addImageButton.layer.cornerRadius = 5
         addImageButton.clipsToBounds = true
@@ -185,6 +189,7 @@ class DetailViewController: UIViewController {
         nameTextField.layer.cornerRadius = 5
         nameTextField.clipsToBounds = true
         nameTextField.placeholder = "이름을 입력하세요"
+        nameTextField.setPlaceholder(color: .lightGray)
         
         // 번호 텍스트 필드
         phoneTextField.borderStyle = .line
@@ -196,6 +201,7 @@ class DetailViewController: UIViewController {
         phoneTextField.layer.cornerRadius = 5
         phoneTextField.clipsToBounds = true
         phoneTextField.placeholder = "번호을 입력하세요"
+        phoneTextField.setPlaceholder(color: .lightGray)
         
         // 즐겨찾기 설정 레이블
         favoriteLabel.textColor = .black
@@ -204,6 +210,7 @@ class DetailViewController: UIViewController {
         // 즐겨찾기 yes 버튼
         yesButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         yesButton.setTitleColor(.black, for: .normal)
+        yesButton.setTitleColor(.systemBlue, for: .highlighted)
         yesButton.layer.borderWidth = 1
         yesButton.layer.cornerRadius = 5
         yesButton.clipsToBounds = true
@@ -212,6 +219,7 @@ class DetailViewController: UIViewController {
         // 즐겨찾기 no 버튼
         noButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         noButton.setTitleColor(.black, for: .normal)
+        noButton.setTitleColor(.systemBlue, for: .highlighted)
         noButton.layer.borderWidth = 1
         noButton.layer.cornerRadius = 5
         noButton.clipsToBounds = true
@@ -255,6 +263,12 @@ class DetailViewController: UIViewController {
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+        }
+        
+        // 뒤로가기 텍스트
+        backButton.titleLabel!.snp.makeConstraints {
+            $0.leading.equalTo(5)
+            $0.trailing.equalTo(-5)
         }
         
         // 저장 버튼

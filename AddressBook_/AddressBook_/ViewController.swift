@@ -8,8 +8,24 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+extension UIViewController {
+    func showAlert(title: String, message: String, dismissPresentingView: Bool = false ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .cancel) { _ in
+            if dismissPresentingView {
+                self.presentingViewController?.dismiss(animated: true)
+            }
+        }
+        alert.addAction(okButton)
+        present(alert, animated: true)
+    }
+}
 
+class ViewController: UIViewController, NotifyViewDiss {
+    func reloadTable() {
+        mainTableView.reloadData()
+    }
+    
     let mainTextField = UITextField()
     let findMemberButton = UIButton()
     
@@ -55,6 +71,8 @@ class ViewController: UIViewController {
         mainTextField.placeholder = "  이름 또는 연락처를 입력해주세요."
         mainTextField.layer.cornerRadius = 5
         mainTextField.layer.borderWidth = 2
+        mainTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+        mainTextField.leftViewMode = .always
         
         // 찾기 버튼 설정
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 24)
@@ -169,6 +187,7 @@ class ViewController: UIViewController {
     
     @objc func addMemberButtonClicked() {
         let detailVC = DetailViewController()
+        detailVC.delegate = self
         detailVC.modalPresentationStyle = .fullScreen
         present(detailVC, animated: true)
     }
@@ -176,6 +195,7 @@ class ViewController: UIViewController {
 
 extension UIViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(MemberManger.shared.count())
         return MemberManger.shared.count()
     }
     
@@ -183,6 +203,7 @@ extension UIViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as? MemberTableViewCell else { return UITableViewCell() }
         
+        cell.initialSetup(index: indexPath.row)
         cell.makeUI()
         
         return cell

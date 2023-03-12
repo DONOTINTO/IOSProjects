@@ -166,15 +166,18 @@ class DetailViewController: UIViewController {
         addImageButton.clipsToBounds = true
         
         // 이름 레이블
+        nameLabel.textColor = .black
         nameLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         nameLabel.textAlignment = .left
         
         // 번호 레이블
+        phoneLabel.textColor = .black
         phoneLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         phoneLabel.textAlignment = .left
         
         // 이름 텍스트 필드
         nameTextField.borderStyle = .line
+        nameTextField.textColor = .black
         nameTextField.font = UIFont.systemFont(ofSize: 15, weight: .light)
         nameTextField.leftView  = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0))
         nameTextField.leftViewMode = .always
@@ -185,6 +188,7 @@ class DetailViewController: UIViewController {
         
         // 번호 텍스트 필드
         phoneTextField.borderStyle = .line
+        phoneTextField.textColor = .black
         phoneTextField.font = UIFont.systemFont(ofSize: 15, weight: .light)
         phoneTextField.leftView  = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0))
         phoneTextField.leftViewMode = .always
@@ -193,7 +197,8 @@ class DetailViewController: UIViewController {
         phoneTextField.clipsToBounds = true
         phoneTextField.placeholder = "번호을 입력하세요"
         
-        // 즐겨찾기 설정
+        // 즐겨찾기 설정 레이블
+        favoriteLabel.textColor = .black
         favoriteLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 즐겨찾기 yes 버튼
@@ -213,10 +218,13 @@ class DetailViewController: UIViewController {
         noButton.isSelected = false
         
         // 메모 레이블
+        memoLabel.textColor = .black
         memoLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         memoLabel.textAlignment = .center
         
         // 메모 텍스트 뷰
+        memoTextView.backgroundColor = .white
+        memoTextView.textColor = .black
         memoTextView.font = UIFont.systemFont(ofSize: 15, weight: .light)
         memoTextView.textAlignment = .left
         memoTextView.layer.borderWidth = 1

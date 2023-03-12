@@ -64,7 +64,10 @@ class ViewController: UIViewController, NotifyViewDiss {
         self.view.addSubview(addMemberButton)
         
         // MARK: - 색상 / 폰트 크기 / 기본 값 설정
-        mainTableView.backgroundColor = .lightGray
+        mainTableView.backgroundColor = .white
+        mainTableView.layer.borderWidth = 1
+        mainTableView.layer.cornerRadius = 5
+        mainTableView.clipsToBounds = true
         
         // 텍스트 필드 설정
         mainTextField.font = .systemFont(ofSize: 15)

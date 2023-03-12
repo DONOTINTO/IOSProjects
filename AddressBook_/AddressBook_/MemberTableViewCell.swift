@@ -19,12 +19,15 @@ class MemberTableViewCell: UITableViewCell {
     
     let nameDataLabel           = UILabel()
     let phoneNumberDataLabel    = UILabel()
-    let memoDataLabel           = UILabel()
+    let memoCheckButton         = UIButton()
     
     // ********************************
     // MARK: - initialSetup
     // ********************************
     func initialSetup(index: Int) {
+        // 기본 배경 색상
+        contentView.backgroundColor = .white
+        
         // 즐겨찾기 버튼
         let isFavorite = MemberManger.shared.memberIsFovorite(index: index)
         favoriteButton.frame.size = CGSize(width: 30, height: 30)
@@ -34,42 +37,54 @@ class MemberTableViewCell: UITableViewCell {
             favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
         
-        
         // 멤버 이미지 뷰
         // let memberImage = MemberManger.shared.memberImage(index: index)
         // memberImageView.image = memberImage
         memberImageView.image = UIImage(systemName: "pencil")
         
         // 이름 레이블
+        nameLabel.backgroundColor = .white
+        nameLabel.textColor = .black
         nameLabel.text = "name"
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 번호 레이블
+        phoneNumberLabel.backgroundColor = .white
+        phoneNumberLabel.textColor = .black
         phoneNumberLabel.text = "phone"
         phoneNumberLabel.textAlignment = .left
         phoneNumberLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 메모 레이블
+        memoLabel.backgroundColor = .white
+        memoLabel.textColor = .black
         memoLabel.text = "memo"
         memoLabel.textAlignment = .left
         memoLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 이름 정보 레이블
+        nameDataLabel.backgroundColor = .white
+        nameDataLabel.textColor = .black
         nameDataLabel.text = MemberManger.shared.memberName(index: index)
         nameDataLabel.textAlignment = .left
         nameDataLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 번호 정보 레이블
+        phoneNumberDataLabel.backgroundColor = .white
+        phoneNumberDataLabel.textColor = .black
         phoneNumberDataLabel.text = MemberManger.shared.memberPhoneNumber(index: index)
         phoneNumberDataLabel.textAlignment = .left
         phoneNumberDataLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // 메모 정보 레이블
-        memoDataLabel.text = MemberManger.shared.memberMemo(index: index)
-        memoDataLabel.textAlignment = .left
-        memoDataLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        memoDataLabel.layer.borderWidth = 1
+        memoCheckButton.backgroundColor = .white
+        memoCheckButton.setTitleColor(.black, for: .normal)
+        memoCheckButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        memoCheckButton.setTitle("메모 확인하기", for: .normal)
+        memoCheckButton.layer.borderWidth = 1
+        memoCheckButton.layer.cornerRadius = 5
+        memoCheckButton.clipsToBounds = true
     }
     
     // ********************************
@@ -85,7 +100,7 @@ class MemberTableViewCell: UITableViewCell {
         
         contentView.addSubview(nameDataLabel)
         contentView.addSubview(phoneNumberDataLabel)
-        contentView.addSubview(memoDataLabel)
+        contentView.addSubview(memoCheckButton)
         
         // 즐겨찾기 버튼
         favoriteButton.snp.makeConstraints {
@@ -124,9 +139,9 @@ class MemberTableViewCell: UITableViewCell {
             $0.top.equalTo(phoneNumberLabel.snp.bottom).offset(12)
             $0.leading.equalTo(memberImageView.snp.trailing).offset(23.5)
             $0.bottom.equalToSuperview().offset(-20)
-            $0.width.equalTo(memoDataLabel.snp.width).dividedBy(3)
+            $0.width.equalTo(memoCheckButton.snp.width).dividedBy(3)
             $0.height.equalTo(phoneNumberLabel.snp.height)
-            $0.centerY.equalTo(memoDataLabel.snp.centerY)
+            $0.centerY.equalTo(memoCheckButton.snp.centerY)
         }
         
         // 이름 정보 레이블
@@ -144,10 +159,9 @@ class MemberTableViewCell: UITableViewCell {
         }
         
         // 메모 정보 레이블
-        memoDataLabel.snp.makeConstraints {
+        memoCheckButton.snp.makeConstraints {
             $0.leading.equalTo(memoLabel.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().offset(-14)
-            $0.bottom.equalToSuperview().offset(-8)
         }
     }
 }

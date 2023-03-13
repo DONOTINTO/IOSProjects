@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="1008.3969465648854" y="-34.507042253521128"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Uxx-6g-hG6">
             <objects>
-                <viewController id="e7A-xa-6qG" sceneMemberID="viewController">
+                <viewController id="e7A-xa-6qG" customClass="DetailViewController" customModule="DdayCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hry-Bc-O3E">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-t9-xhT">
-                                                        <rect key="frame" x="0.0" y="46" width="373" height="150"/>
+                                                        <rect key="frame" x="0.0" y="46.333333333333329" width="373" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="0fm-Ol-taL"/>
                                                         </constraints>
@@ -191,6 +191,11 @@
                             <constraint firstItem="hDP-jh-u9w" firstAttribute="leading" secondItem="fmE-1G-2vZ" secondAttribute="leading" id="r42-a9-SpS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainDatePicker" destination="QnE-t9-xhT" id="77C-0R-wBr"/>
+                        <outlet property="mainTextView" destination="y76-rt-ubV" id="cVs-1p-Tsx"/>
+                        <outlet property="nameTextField" destination="aYW-5o-gBJ" id="Wju-VY-Gky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6v-2E-fAs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

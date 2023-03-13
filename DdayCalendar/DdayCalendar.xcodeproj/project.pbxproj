@@ -14,6 +14,7 @@
 		AC31294229BEED0700F21CFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC31294129BEED0700F21CFE /* Assets.xcassets */; };
 		AC31294529BEED0700F21CFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC31294329BEED0700F21CFE /* LaunchScreen.storyboard */; };
 		AC31294D29BEF41000F21CFE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31294C29BEF41000F21CFE /* MainTableViewCell.swift */; };
+		AC31294F29BEF57400F21CFE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31294E29BEF57400F21CFE /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		AC31294429BEED0700F21CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC31294629BEED0700F21CFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC31294C29BEF41000F21CFE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		AC31294E29BEF57400F21CFE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +63,12 @@
 				AC31293829BEED0500F21CFE /* AppDelegate.swift */,
 				AC31293A29BEED0500F21CFE /* SceneDelegate.swift */,
 				AC31293C29BEED0500F21CFE /* ViewController.swift */,
+				AC31294E29BEF57400F21CFE /* DetailViewController.swift */,
+				AC31294C29BEF41000F21CFE /* MainTableViewCell.swift */,
 				AC31293E29BEED0500F21CFE /* Main.storyboard */,
 				AC31294129BEED0700F21CFE /* Assets.xcassets */,
 				AC31294329BEED0700F21CFE /* LaunchScreen.storyboard */,
 				AC31294629BEED0700F21CFE /* Info.plist */,
-				AC31294C29BEF41000F21CFE /* MainTableViewCell.swift */,
 			);
 			path = DdayCalendar;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				AC31293D29BEED0500F21CFE /* ViewController.swift in Sources */,
 				AC31293929BEED0500F21CFE /* AppDelegate.swift in Sources */,
+				AC31294F29BEF57400F21CFE /* DetailViewController.swift in Sources */,
 				AC31294D29BEF41000F21CFE /* MainTableViewCell.swift in Sources */,
 				AC31293B29BEED0500F21CFE /* SceneDelegate.swift in Sources */,
 			);

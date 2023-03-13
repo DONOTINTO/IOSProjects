@@ -8,8 +8,6 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
-
-    
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var dDayLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!

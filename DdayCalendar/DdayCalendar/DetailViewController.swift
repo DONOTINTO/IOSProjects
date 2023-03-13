@@ -12,6 +12,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mainTextView: UITextView!
     
+    var newDday: Dday?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +27,24 @@ class DetailViewController: UIViewController {
     
     @objc func saveButtonClicked() {
         // 1. 데이터 저장
+        let date = mainDatePicker.date
+        let title = nameTextField.text!
+        var memo: String?
         
-        // 2. 화면 전환
+        if !mainTextView.text.isEmpty {
+            memo = mainTextView.text
+        }
+        
+        if let memo = memo {
+            newDday = Dday(date: date, title: title, memo: memo)
+        } else {
+            newDday = Dday(date: date, title: title)
+        }
+        
+        if let newDday = newDday {
+            DataStorage.ddayList.append(newDday)
+        }
+
         self.navigationController?.popViewController(animated: true)
-        
-        // 3.
     }
 }

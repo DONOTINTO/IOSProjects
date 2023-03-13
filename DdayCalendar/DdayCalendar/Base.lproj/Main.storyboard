@@ -101,11 +101,14 @@
                                 <action selector="editButtonClicked:" destination="BYZ-38-t0r" id="isP-lo-Vte"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pXH-3S-sPs">
-                            <connections>
-                                <action selector="addButtonClicked:" destination="BYZ-38-t0r" id="5y4-w1-wv3"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="pXH-3S-sPs">
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="BYZ-38-t0r" id="5y4-w1-wv3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="calendar" catalog="system" id="euT-qJ-cVa"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="ddayTableView" destination="ubI-0F-Ek8" id="HGG-IY-Haw"/>
@@ -130,7 +133,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="ICL-eP-vbR">
-                                                <rect key="frame" x="10" y="0.0" width="373" height="525"/>
+                                                <rect key="frame" x="10" y="0.0" width="373" height="759.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제 인가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojK-6u-cq6">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
@@ -138,31 +141,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-t9-xhT">
-                                                        <rect key="frame" x="0.0" y="46.333333333333329" width="373" height="150"/>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-t9-xhT">
+                                                        <rect key="frame" x="0.0" y="46.333333333333343" width="373" height="384.66666666666663"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="0fm-Ol-taL"/>
                                                         </constraints>
                                                     </datePicker>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어떤 날인가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-i2-3bt">
-                                                        <rect key="frame" x="0.0" y="222.33333333333331" width="373" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="457" width="373" height="20.333333333333314"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex) 결혼기념일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-5o-gBJ">
-                                                        <rect key="frame" x="0.0" y="268.66666666666669" width="373" height="34"/>
+                                                        <rect key="frame" x="0.0" y="503.33333333333337" width="373" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="필요시 메모를 남겨주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arA-Pj-Fho">
-                                                        <rect key="frame" x="0.0" y="328.66666666666669" width="373" height="20.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="563.33333333333337" width="373" height="20.333333333333371"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y76-rt-ubV">
-                                                        <rect key="frame" x="0.0" y="375" width="373" height="150"/>
+                                                        <rect key="frame" x="0.0" y="609.66666666666663" width="373" height="150"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="vyQ-wq-0Lk"/>
@@ -232,6 +235,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

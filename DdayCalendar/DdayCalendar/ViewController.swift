@@ -28,11 +28,17 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return DataStorage.ddayList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        
+        let item = DataStorage.ddayList[indexPath.row]
+        cell.cellImageView.image = item.thumbnail ?? UIImage(systemName: "pencil")
+        cell.dateLabel.text = "\(item.date)"
+        cell.dDayLabel.text = "-"
+        cell.memoLabel.text = item.memo ?? "메모 없음"
         
         return cell
     }

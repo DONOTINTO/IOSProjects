@@ -15,7 +15,20 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        setBarButtonItem()
     }
 
+    func setBarButtonItem() {
+        let saveBarButtonItem = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonClicked))
+        self.navigationItem.rightBarButtonItem = saveBarButtonItem
+    }
+    
+    @objc func saveButtonClicked() {
+        // 1. 데이터 저장
+        
+        // 2. 화면 전환
+        self.navigationController?.popViewController(animated: true)
+        
+        // 3.
+    }
 }

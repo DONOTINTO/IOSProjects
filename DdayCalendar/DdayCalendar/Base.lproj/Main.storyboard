@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="197" id="WO2-lz-muj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="197" id="WO2-lz-muj" customClass="MainTableViewCell" customModule="DdayCalendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="197"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WO2-lz-muj" id="8jg-eG-Kmy">
@@ -75,6 +75,13 @@
                                                 <constraint firstItem="D6p-Ft-frn" firstAttribute="top" secondItem="8jg-eG-Kmy" secondAttribute="top" constant="10" id="asX-Y7-n87"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImageView" destination="uEU-ki-0Zl" id="Dn6-bn-7X6"/>
+                                            <outlet property="dDayLabel" destination="u9a-im-lhd" id="07l-eu-bYj"/>
+                                            <outlet property="dateLabel" destination="SnC-hI-VSK" id="uIy-kH-lYV"/>
+                                            <outlet property="memoLabel" destination="AQR-tk-HXy" id="YHk-1p-Orp"/>
+                                            <outlet property="nameLabel" destination="Qvr-UR-UPu" id="IcG-X9-e7J"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -121,7 +128,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-t9-xhT">
-                                                        <rect key="frame" x="0.0" y="46.333333333333329" width="373" height="150"/>
+                                                        <rect key="frame" x="0.0" y="46" width="373" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="0fm-Ol-taL"/>
                                                         </constraints>

@@ -96,8 +96,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="D-Day" id="Ry8-yA-Q5f">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="tN2-T9-Do8"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pXH-3S-sPs"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="tN2-T9-Do8">
+                            <connections>
+                                <action selector="editButtonClicked:" destination="BYZ-38-t0r" id="isP-lo-Vte"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pXH-3S-sPs">
+                            <connections>
+                                <action selector="addButtonClicked:" destination="BYZ-38-t0r" id="5y4-w1-wv3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

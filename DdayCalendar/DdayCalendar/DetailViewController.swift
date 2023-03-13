@@ -8,13 +8,14 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
     @IBOutlet weak var mainDatePicker: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mainTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
     }
 
 }

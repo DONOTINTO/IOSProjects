@@ -69,12 +69,12 @@
 				AC31293C29BEED0500F21CFE /* ViewController.swift */,
 				AC31294E29BEF57400F21CFE /* DetailViewController.swift */,
 				AC31294C29BEF41000F21CFE /* MainTableViewCell.swift */,
+				AC31295029BEFAFA00F21CFE /* DataStorage.swift */,
+				AC31295229BEFB2100F21CFE /* Dday.swift */,
 				AC31293E29BEED0500F21CFE /* Main.storyboard */,
 				AC31294129BEED0700F21CFE /* Assets.xcassets */,
 				AC31294329BEED0700F21CFE /* LaunchScreen.storyboard */,
 				AC31294629BEED0700F21CFE /* Info.plist */,
-				AC31295029BEFAFA00F21CFE /* DataStorage.swift */,
-				AC31295229BEFB2100F21CFE /* Dday.swift */,
 			);
 			path = DdayCalendar;
 			sourceTree = "<group>";

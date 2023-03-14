@@ -61,8 +61,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let item = DataStorage.ddayList[indexPath.row]
         cell.cellImageView.image = item.thumbnail ?? UIImage(systemName: "pencil")
         cell.nameLabel.text = item.title
-        cell.dateLabel.text = dateFormator.string(from: item.date)
-        cell.dDayLabel.text = "-"
+        cell.dateLabel.text = dateFormator.string(from: item.selectedDate)
+        cell.dDayLabel.text = item.getDday()
         cell.memoLabel.text = item.memo ?? "메모 없음"
         
         return cell

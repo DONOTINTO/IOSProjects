@@ -26,21 +26,21 @@ class DetailViewController: UIViewController {
     }
     
     @objc func saveButtonClicked() {
-        // 1. 데이터 저장
-        let date = mainDatePicker.date
-        let title = nameTextField.text!
+        let curDate         = Date()
+        let selectedDate    = mainDatePicker.date
+        let title           = nameTextField.text!
         var memo: String?
-        
+
         if !mainTextView.text.isEmpty {
             memo = mainTextView.text
         }
         
         if let memo = memo {
-            newDday = Dday(date: date, title: title, memo: memo)
+            newDday = Dday(curDate: curDate, selectedDate: selectedDate, title: title, memo: memo)
         } else {
-            newDday = Dday(date: date, title: title)
+            newDday = Dday(curDate: curDate, selectedDate: selectedDate, title: title)
         }
-        
+
         if let newDday = newDday {
             DataStorage.ddayList.append(newDday)
         }
